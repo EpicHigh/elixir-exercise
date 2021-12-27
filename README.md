@@ -1,7 +1,6 @@
-# Cards
+# Elixir Exercises
 
-**TODO: Add description**
-
+A repo that compiles the exercise of the Elixir.
 
 ## Useful commands
 
@@ -12,7 +11,7 @@ iex -S mix
 recompile # recompile the project
 ```
 
-Then you can call modules and methods. For example:
+Then you can call modules and methods directly. For example:
 
 ```bash
 Card.create_deck
