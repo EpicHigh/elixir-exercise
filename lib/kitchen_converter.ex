@@ -5,12 +5,12 @@ defmodule KitchenCalculator do
   you need to come up with a way to convert common US baking measurements to milliliters (mL)
   for your own ease.
 
-  Unit to convert	volume	in milliliters (mL)
-  mL	              1	           1
-  US cup	          1	         240
-  US fluid ounce	  1	          30
-  US teaspoon      	1	           5
-  US tablespoon	    1	          15
+  Unit to convert | volume | in milliliters (mL)
+  mL | 1 | 1
+  US cup | 1 | 240
+  US fluid ounce | 1 | 30
+  US teaspoon | 1 | 5
+  US tablespoon | 1 | 15
   """
   @spec get_volume({atom, integer}) :: integer
   @doc """
