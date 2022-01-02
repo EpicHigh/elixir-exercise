@@ -16,7 +16,7 @@ defmodule KitchenCalculator do
   @doc """
   Given a volume-pair tuple, it should return just the numeric component.
   """
-  def get_volume({_, volume} = _volume_pair) do
+  def get_volume({_, volume}) do
     volume
   end
   @spec to_milliliter(
@@ -29,19 +29,19 @@ defmodule KitchenCalculator do
   @doc """
   Given a volume-pair tuple, it should convert the volume to milliliters using the conversion chart.
   """
-  def to_milliliter({:milliliter, _volume} = volume_pair) do
+  def to_milliliter({:milliliter, _} = volume_pair) do
     volume_pair
   end
-  def to_milliliter({:cup, volume} = _volume_pair) do
+  def to_milliliter({:cup, volume}) do
     {:milliliter, volume * 240}
   end
-  def to_milliliter({:fluid_ounce, volume} = _volume_pair) do
+  def to_milliliter({:fluid_ounce, volume}) do
     {:milliliter, volume * 30}
   end
-  def to_milliliter({:teaspoon, volume} = _volume_pair) do
+  def to_milliliter({:teaspoon, volume}) do
     {:milliliter, volume * 5}
   end
-  def to_milliliter({:tablespoon, volume} = _volume_pair) do
+  def to_milliliter({:tablespoon, volume}) do
     {:milliliter, volume * 15}
   end
   @spec from_milliliter({any, integer}, :cup | :fluid_ounce | :milliliter | :tablespoon | :teaspoon) ::
@@ -54,26 +54,26 @@ defmodule KitchenCalculator do
   Given a volume-pair tuple and the desired unit, it should convert the volume to the desired unit
   using the conversion chart.
   """
-  def from_milliliter({_, volume} = _volume_pair, :milliliter = _unit) do
+  def from_milliliter({_, volume}, :milliliter) do
     {:milliliter, volume}
   end
-  def from_milliliter({_, volume} = _volume_pair, :cup = _unit) do
+  def from_milliliter({_, volume}, :cup) do
     {:cup, volume / 240}
   end
-  def from_milliliter({_, volume} = _volume_pair, :fluid_ounce = _unit) do
+  def from_milliliter({_, volume}, :fluid_ounce) do
     {:fluid_ounce, volume / 30}
   end
-  def from_milliliter({_, volume} = _volume_pair, :teaspoon = _unit) do
+  def from_milliliter({_, volume}, :teaspoon) do
     {:teaspoon, volume / 5}
   end
-  def from_milliliter({_, volume} = _volume_pair, :tablespoon = _unit) do
+  def from_milliliter({_, volume}, :tablespoon) do
     {:tablespoon, volume / 15}
   end
   @spec convert({atom, integer}, atom) :: {atom, float}
   @doc """
   Given a volume-pair tuple and the desired unit
   """
-  def convert({convert_unit, volume} = _volume_pair, unit) when convert_unit === unit, do: {unit, volume}
+  def convert({convert_unit, volume}, unit) when convert_unit === unit, do: {unit, volume}
   def convert(volume_pair, unit) do
     volume_pair
     |>KitchenCalculator.to_milliliter
