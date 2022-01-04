@@ -3,6 +3,8 @@ defmodule HighScore do
   This module is used to keep track of the high scores for the most popular game
   in your local arcade hall.
   """
+  @initial_score 0
+
   @spec new :: %{}
   @doc """
   Take any arguments and returns a new, empty map of high scores.
@@ -15,7 +17,7 @@ defmodule HighScore do
   @doc """
   Add a player to the high scores.
   """
-  def add_player(scores, name, score \\ 0) do
+  def add_player(scores, name, score \\ @initial_score) do
     Map.put(scores, name, score)
   end
 
@@ -32,7 +34,7 @@ defmodule HighScore do
   Reset a player's score to 0.
   """
   def reset_score(scores, name) do
-    Map.put(scores, name, 0)
+    Map.put(scores, name, @initial_score)
   end
 
   @spec update_score(map, keyword, integer) :: map
