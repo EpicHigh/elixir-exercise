@@ -17,7 +17,7 @@ defmodule BirdCount do
   """
   def today([]), do: nil
   def today([head | _]), do: head
-  @spec increment_day_count(list(number)) :: nonempty_maybe_improper_list
+  @spec increment_day_count(list(number)) :: nil | list(number)
   @doc """
   Take a list of daily bird counts and increment the today's count by 1.
   If the list is empty, return [1].
@@ -31,19 +31,19 @@ defmodule BirdCount do
   """
   def has_day_without_birds?([]), do: false
   def has_day_without_birds?([head | _]) when head == 0, do: true
-  def has_day_without_birds?([_ | tail]), do: BirdCount.has_day_without_birds?(tail)
+  def has_day_without_birds?([_ | tail]), do: has_day_without_birds?(tail)
   @spec total(list(number)) :: number
   @doc """
   Take a list of daily bird counts and return the total number that
   visited your garden since you started collecting the data.
   """
   def total([]), do: 0
-  def total([head | tail]), do: head + BirdCount.total(tail)
+  def total([head | tail]), do: head + total(tail)
   @spec busy_days(list(number)) :: number
   @doc """
   Take a list of daily bird counts and return the number of busy days.
   """
   def busy_days([]), do: 0
-  def busy_days([head | tail]) when head >= 5, do: 1 + BirdCount.busy_days(tail)
-  def busy_days([_ | tail]), do: BirdCount.busy_days(tail)
+  def busy_days([head | tail]) when head >= 5, do: 1 + busy_days(tail)
+  def busy_days([_ | tail]), do: busy_days(tail)
 end

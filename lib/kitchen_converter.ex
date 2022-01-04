@@ -76,7 +76,7 @@ defmodule KitchenCalculator do
   def convert({convert_unit, volume}, unit) when convert_unit === unit, do: {unit, volume}
   def convert(volume_pair, unit) do
     volume_pair
-    |>KitchenCalculator.to_milliliter
-    |>KitchenCalculator.from_milliliter(unit)
+    |>to_milliliter
+    |>from_milliliter(unit)
   end
 end

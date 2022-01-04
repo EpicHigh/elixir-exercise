@@ -19,7 +19,7 @@ defmodule HighSchoolSweetheart do
   def initial(name) do
     name
     |>String.upcase
-    |>HighSchoolSweetheart.first_letter
+    |>first_letter
     |>Kernel.<>(".")
   end
   @doc """
@@ -28,14 +28,14 @@ defmodule HighSchoolSweetheart do
   """
   def initials(full_name) do
     [name, surname] = String.split(full_name)
-    "#{HighSchoolSweetheart.initial(name)} #{HighSchoolSweetheart.initial(surname)}"
+    "#{initial(name)} #{initial(surname)}"
   end
   @doc """
   Take two full names and return the initials
   """
   def pair(full_name1, full_name2) do
-    name1 = HighSchoolSweetheart.initials(full_name1)
-    name2 = HighSchoolSweetheart.initials(full_name2)
+    name1 = initials(full_name1)
+    name2 = initials(full_name2)
     """
          ******       ******
        **      **   **      **
