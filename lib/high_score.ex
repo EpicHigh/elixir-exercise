@@ -5,7 +5,7 @@ defmodule HighScore do
   """
   @spec new :: %{}
   @doc """
-  A function that take any arguments and returns a new, empty map of high scores.
+  Take any arguments and returns a new, empty map of high scores.
   """
   def new() do
     %{}
