@@ -14,17 +14,7 @@ defmodule LibraryFees do
     datetime
   end
 
-  @spec before_noon?(%{
-          :calendar => any,
-          :day => any,
-          :hour => any,
-          :microsecond => any,
-          :minute => any,
-          :month => any,
-          :second => any,
-          :year => any,
-          optional(any) => any
-        }) :: boolean
+  @spec before_noon?(Calendar.naive_datetime()) :: boolean
   @doc """
   Given a datetime object, it should return true if the datetime is before noon.
   """
@@ -38,17 +28,7 @@ defmodule LibraryFees do
     end
   end
 
-  @spec return_date(%{
-          :calendar => atom,
-          :day => any,
-          :hour => any,
-          :microsecond => {any, any},
-          :minute => any,
-          :month => any,
-          :second => any,
-          :year => any,
-          optional(any) => any
-        }) :: Date.t()
+  @spec return_date(Calendar.naive_datetime()) :: Date.t()
   @doc """
   Given a datetime object, it should return the date of the return date.
   """
@@ -64,20 +44,7 @@ defmodule LibraryFees do
     end
   end
 
-  @spec days_late(
-          %{:calendar => atom, :day => any, :month => any, :year => any, optional(any) => any},
-          %{
-            :calendar => any,
-            :day => any,
-            :hour => any,
-            :microsecond => any,
-            :minute => any,
-            :month => any,
-            :second => any,
-            :year => any,
-            optional(any) => any
-          }
-        ) :: integer
+  @spec days_late(Calendar.date(), Calendar.naive_datetime()) :: integer
   @doc """
   Given a checkout datetime and a return datetime, it should return the number of days late.
   """
@@ -86,17 +53,7 @@ defmodule LibraryFees do
     if diff > 0, do: diff, else: 0
   end
 
-  @spec monday?(%{
-          :calendar => any,
-          :day => any,
-          :hour => any,
-          :microsecond => any,
-          :minute => any,
-          :month => any,
-          :second => any,
-          :year => any,
-          optional(any) => any
-        }) :: boolean
+  @spec monday?(Calendar.naive_datetime()) :: boolean
   @doc """
   Given a datetime object, it should return true if the datetime is a Monday.
   """
